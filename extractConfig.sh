@@ -1,5 +1,5 @@
 dir=$(pwd)
-pushd ~/Development/azure-api-management-devops-resource-kit/src/APIM_ARMTemplate/apimtemplate
-dotnet run extract --name nkpapim-dev --resourceGroup nkpapim-devops-rg --fileFolder $dir
+pushd $APIM_TEMPLATE_TOOL_PATH
+dotnet run extract --name $APIM_DEV_NAME --resourceGroup $APIM_DEV_RG --fileFolder $dir
 popd
-mv nkpapim-dev-apis-template.json nkpapim-prod-apis-template.json
+mv "$APIM_DEV_NAME-apis-template.json" "$APIM_PROD_NAME-apis-template.json"
