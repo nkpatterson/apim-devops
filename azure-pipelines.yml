@@ -13,7 +13,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     TargetFolder: $(build.artifactstagingdirectory)
-    Contents: "**"
+    Contents: "*.json"
 
 - task: PublishBuildArtifacts@1
   inputs:
