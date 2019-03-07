@@ -160,40 +160,7 @@
     },
     {
       "properties": {
-        "templateParameters": [
-          {
-            "name": "id",
-            "description": "Format - int32.",
-            "type": "integer",
-            "required": true,
-            "values": []
-          }
-        ],
-        "request": {
-          "queryParameters": [],
-          "headers": []
-        },
-        "responses": [
-          {
-            "statusCode": "200",
-            "description": "Success",
-            "headers": []
-          }
-        ],
-        "displayName": "Values_GetById",
-        "method": "GET",
-        "urlTemplate": "/api/Values/{id}"
-      },
-      "name": "[concat(parameters('ApimServiceName'), '/MyAPI/5c80539f0e1f5e236084d566')]",
-      "type": "Microsoft.ApiManagement/service/apis/operations",
-      "apiVersion": "2018-06-01-preview",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'MyAPI')]"
-      ]
-    },
-    {
-      "properties": {
-        "policyContent": "<policies>\r\n\t<inbound>\r\n\t\t<base />\r\n\t\t<set-backend-service base-url=\"{{myapi-backenduri}}\" />\r\n\t</inbound>\r\n\t<backend>\r\n\t\t<base />\r\n\t</backend>\r\n\t<outbound>\r\n\t\t<base />\r\n\t</outbound>\r\n\t<on-error>\r\n\t\t<base />\r\n\t</on-error>\r\n</policies>",
+        "policyContent": "<policies>\r\n\t<inbound>\r\n\t\t<base />\r\n\t</inbound>\r\n\t<backend>\r\n\t\t<base />\r\n\t</backend>\r\n\t<outbound>\r\n\t\t<base />\r\n\t</outbound>\r\n\t<on-error>\r\n\t\t<base />\r\n\t</on-error>\r\n</policies>",
         "contentFormat": "xml"
       },
       "name": "[concat(parameters('ApimServiceName'), '/MyAPI/policy')]",
