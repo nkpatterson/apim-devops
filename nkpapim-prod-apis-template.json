@@ -160,7 +160,7 @@
     },
     {
       "properties": {
-        "policyContent": "<policies>\r\n\t<inbound>\r\n\t\t<base />\r\n\t</inbound>\r\n\t<backend>\r\n\t\t<base />\r\n\t</backend>\r\n\t<outbound>\r\n\t\t<base />\r\n\t</outbound>\r\n\t<on-error>\r\n\t\t<base />\r\n\t</on-error>\r\n</policies>",
+        "policyContent": "<policies>\r\n\t<inbound>\r\n\t\t<base />\r\n\t\t<set-backend-service base-url=\"{{myapi-backenduri}}\" />\r\n\t</inbound>\r\n\t<backend>\r\n\t\t<base />\r\n\t</backend>\r\n\t<outbound>\r\n\t\t<base />\r\n\t</outbound>\r\n\t<on-error>\r\n\t\t<base />\r\n\t</on-error>\r\n</policies>",
         "contentFormat": "xml"
       },
       "name": "[concat(parameters('ApimServiceName'), '/MyAPI/policy')]",
