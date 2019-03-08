@@ -18,11 +18,11 @@
         },
         "apiRevision": "1",
         "subscriptionRequired": false,
-        "displayName": "MyAPI",
+        "displayName": "My API",
         "serviceUrl": "http://nkpapim-devops-backend-beta.azurewebsites.net",
         "path": "myapi",
         "protocols": [
-          "https"
+          "http"
         ]
       },
       "name": "[concat(parameters('ApimServiceName'), '/MyAPI')]",
@@ -56,7 +56,7 @@
         "method": "DELETE",
         "urlTemplate": "/api/Values/{id}"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/MyAPI/5c80539f0e1f5e236084d568')]",
+      "name": "[concat(parameters('ApimServiceName'), '/MyAPI/Delete')]",
       "type": "Microsoft.ApiManagement/service/apis/operations",
       "apiVersion": "2018-06-01-preview",
       "dependsOn": [
@@ -81,7 +81,7 @@
         "method": "GET",
         "urlTemplate": "/api/Values"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/MyAPI/5c80539f0e1f5e236084d564')]",
+      "name": "[concat(parameters('ApimServiceName'), '/MyAPI/Get')]",
       "type": "Microsoft.ApiManagement/service/apis/operations",
       "apiVersion": "2018-06-01-preview",
       "dependsOn": [
@@ -93,11 +93,11 @@
         "policyContent": "<!--\r\n    IMPORTANT:\r\n    - Policy elements can appear only within the <inbound>, <outbound>, <backend> section elements.\r\n    - To apply a policy to the incoming request (before it is forwarded to the backend service), place a corresponding policy element within the <inbound> section element.\r\n    - To apply a policy to the outgoing response (before it is sent back to the caller), place a corresponding policy element within the <outbound> section element.\r\n    - To add a policy, place the cursor at the desired insertion point and select a policy from the sidebar.\r\n    - To remove a policy, delete the corresponding policy statement from the policy document.\r\n    - Position the <base> element within a section element to inherit all policies from the corresponding section element in the enclosing scope.\r\n    - Remove the <base> element to prevent inheriting policies from the corresponding section element in the enclosing scope.\r\n    - Policies are applied in the order of their appearance, from the top down.\r\n    - Comments within policy elements are not supported and may disappear. Place your comments between policy elements or at a higher level scope.\r\n-->\r\n<policies>\r\n\t<inbound>\r\n\t\t<base />\r\n\t</inbound>\r\n\t<backend>\r\n\t\t<base />\r\n\t</backend>\r\n\t<outbound>\r\n\t\t<base />\r\n\t\t<set-header name=\"Hello\" exists-action=\"append\">\r\n\t\t\t<value>World</value>\r\n\t\t</set-header>\r\n\t</outbound>\r\n\t<on-error>\r\n\t\t<base />\r\n\t</on-error>\r\n</policies>",
         "contentFormat": "xml"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/MyAPI/5c80539f0e1f5e236084d564/policy')]",
+      "name": "[concat(parameters('ApimServiceName'), '/MyAPI/Get/policy')]",
       "type": "Microsoft.ApiManagement/service/apis/operations/policies",
       "apiVersion": "2018-06-01-preview",
       "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'MyAPI', '5c80539f0e1f5e236084d564')]"
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'MyAPI', 'Get')]"
       ]
     },
     {
@@ -118,7 +118,7 @@
         "method": "POST",
         "urlTemplate": "/api/Values"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/MyAPI/5c80539f0e1f5e236084d565')]",
+      "name": "[concat(parameters('ApimServiceName'), '/MyAPI/Post')]",
       "type": "Microsoft.ApiManagement/service/apis/operations",
       "apiVersion": "2018-06-01-preview",
       "dependsOn": [
@@ -151,7 +151,40 @@
         "method": "PUT",
         "urlTemplate": "/api/Values/{id}"
       },
-      "name": "[concat(parameters('ApimServiceName'), '/MyAPI/5c80539f0e1f5e236084d567')]",
+      "name": "[concat(parameters('ApimServiceName'), '/MyAPI/Put')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2018-06-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'MyAPI')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "id",
+            "description": "Format - int32.",
+            "type": "integer",
+            "required": true,
+            "values": []
+          }
+        ],
+        "request": {
+          "queryParameters": [],
+          "headers": []
+        },
+        "responses": [
+          {
+            "statusCode": "200",
+            "description": "Success",
+            "headers": []
+          }
+        ],
+        "displayName": "Values_GetById",
+        "method": "GET",
+        "urlTemplate": "/api/Values/{id}"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/MyAPI/Values_GetById')]",
       "type": "Microsoft.ApiManagement/service/apis/operations",
       "apiVersion": "2018-06-01-preview",
       "dependsOn": [
